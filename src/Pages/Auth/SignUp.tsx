@@ -3,26 +3,27 @@ import Auth from "../../components/Auth";
 import { useRegisterUserMutation } from "../../Redux/api";
 import CircularProgressBar from "../../components/CircularProgressBar";
 import { Navigate } from "react-router-dom";
+import routs from "../../utilities/Routs";
 
 function SignUp() {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [name,setName]=useState("");
-  const [registerUser, { isError, data, isLoading,isSuccess }] =
+  const [name, setName] = useState("");
+  const [registerUser, { isError, data, isLoading, isSuccess }] =
     useRegisterUserMutation();
-    if (isSuccess) {
-      console.log("SuccessFully")
+  if (isSuccess) {
+    console.log("SuccessFully");
     //  <Navigate replace to={'/dashboard'} />
-    }
+  }
   if (data) {
     console.log("Successfuly register your account");
   }
   console.log(isError);
   const submitHandler = async (e: any) => {
     e.preventDefault();
-    console.log(emailValue, passwordValue,name);
+    console.log(emailValue, passwordValue, name);
     const val = {
-      name:name,
+      name: name,
       email: emailValue,
       password: passwordValue,
     };
@@ -36,7 +37,7 @@ function SignUp() {
       ) : (
         <form onSubmit={submitHandler}>
           <Auth
-            navigate="/admin/dashboard"
+            navigate={routs.DASHBOARD}
             titleName="Sign Up"
             signUp
             name={name}
@@ -49,9 +50,7 @@ function SignUp() {
           />
         </form>
       )}
-      {
-        isSuccess&&<Navigate replace to={'/admin/dashboard'}/>
-      }
+      {isSuccess && <Navigate replace to={"/admin/dashboard"} />}
     </div>
   );
 }

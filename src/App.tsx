@@ -4,7 +4,7 @@ import CircularProgressBar from "./components/CircularProgressBar";
 import routs from "./utilities/Routs";
 
 const Dashboard = lazy(() => import("./Pages/Dashboard"));
-const Customers = lazy(() => import("./Pages/Customers"));
+const Customers = lazy(() => import("./Pages/Customers/Customers"));
 const Document = lazy(() => import("./Pages/Documents"));
 const Transaction = lazy(() => import("./Pages/Transaction"));
 const SignIn = lazy(() => import("./Pages/Auth/SignIn"));
