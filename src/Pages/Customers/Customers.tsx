@@ -1,10 +1,9 @@
-import * as React from "react";
 import CustomersComponent from "./index";
 import CustomersServiceComponent from "./index.service";
 
-function Customers(this: any) {
+function Customers(props: any) {
   return (
-    <CustomersServiceComponent {...this.props}>
+    <CustomersServiceComponent {...props}>
       {(props: any) => <CustomersComponent {...props} />}
     </CustomersServiceComponent>
   );
