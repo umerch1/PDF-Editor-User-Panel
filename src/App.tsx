@@ -10,7 +10,7 @@ const Transaction = lazy(() => import("./Pages/Transaction"));
 const SignIn = lazy(() => import("./Pages/Auth/SignIn"));
 const EditUser = lazy(() => import("./Pages/Auth/EditUser"));
 const Home = lazy(() => import("./Pages/Home"));
-const SignUp = lazy(() => import("./Pages/Auth/SignUp"));
+const SignUp = lazy(() => import("./Pages/Auth/SignUp/SignUp"));
 const Logout = lazy(() => import("./Pages/Auth/Logout"));
 const ForgetPassword = lazy(() => import("./Pages/Auth/ForgetPassword"));
 const AdminSignIn = lazy(() => import("./Pages/Auth/AdminSignIn"));

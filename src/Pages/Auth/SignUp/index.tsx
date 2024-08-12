@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Auth from "../../components/Auth";
-import { useRegisterUserMutation } from "../../Redux/api";
-import CircularProgressBar from "../../components/CircularProgressBar";
+import Auth from "../../../components/Auth";
+import { useRegisterUserMutation } from "../../../Redux/api";
+import CircularProgressBar from "../../../components/CircularProgressBar";
 import { Navigate } from "react-router-dom";
-import routs from "../../utilities/Routs";
+import routs from "../../../utilities/Routs";
 
-function SignUp() {
+function SignUpComponent() {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [name, setName] = useState("");
@@ -55,4 +55,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpComponent;
