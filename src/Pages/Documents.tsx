@@ -12,7 +12,6 @@ const Documents = () => {
             Edit PDF Document
           </button>
         </EmbedPDF>
-        
       </main>
     </div>
   );
