@@ -23,13 +23,13 @@ const myReducer = createSlice({
         userErrorStore: (state, action: PayloadAction<string>) => {
             state.errorMessage = action.payload;
         },
-        removeDataStore:(state)=>{
-            state.userData=[]
+        removeDataStore: (state) => {
+            state.userData = []
         }
     },
 })
 
-export const { userDataStore, userErrorStore,removeDataStore } = myReducer.actions;
+export const { userDataStore, userErrorStore, removeDataStore } = myReducer.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const userData = (state: RootState) => state.myReducer.userData;

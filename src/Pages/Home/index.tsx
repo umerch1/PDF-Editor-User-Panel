@@ -1,33 +1,14 @@
-import "../Styles/loginstyle.css";
-import Nav from "../components/Nav";
-import Banner from "../components/Banner";
-import HeadingSection from "../components/HeadingSection";
-import Card from "../components/Card";
-import CardsData from "../constants/CardsData";
-import circle1 from "../assets/banner/circle1.png";
-import ImageCard from "../components/ImageCard";
-import Footer from "../components/Footer";
-import FooterSection from "../components/FooterSection";
-import { useNavigate } from "react-router-dom";
-import { userData } from "../Redux/reducer";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import routs from "../utilities/Routs";
-const Home = () => {
-  const dataAccess=useSelector((state:any)=>state.myReducer.userData);
-  console.log("dataAccess",dataAccess)
-  const navigation=useNavigate();
-  useEffect(() => {
-    console.log("Data Length",userData.length,userData)
-    if (dataAccess.length>1) {
-      console.log("Data Length", userData.length,userData)
-      navigation(routs.DASHBOARD)
-    }else{
-      console.log("User not login")
-    }
-    
-  }, [])
-  
+import "../../Styles/loginstyle.css";
+import Nav from "../../components/Nav";
+import Banner from "../../components/Banner";
+import HeadingSection from "../../components/HeadingSection";
+import Card from "../../components/Card";
+import CardsData from "../../constants/CardsData";
+import circle1 from "../../assets/banner/circle1.png";
+import ImageCard from "../../components/ImageCard";
+import Footer from "../../components/Footer";
+import FooterSection from "../../components/FooterSection";
+const HomeComponent = () => {
   return (
     <div>
       {/* ----------------NavBaar--------------- */}
@@ -94,10 +75,10 @@ const Home = () => {
         </p>
         <div className="w-2/4 flex flex-row">
           <div className="textStyle text-[#6A6A7B] w-2/4 text-justify">
-          pdfFiller is proud of its massive user base and is committed to delivering the greatest possible experience and value to each customer.
-           We collaborate with companies small
-            to large around the world to help them engage their audiences and
-            build brand awareness.
+            pdfFiller is proud of its massive user base and is committed to
+            delivering the greatest possible experience and value to each
+            customer. We collaborate with companies small to large around the
+            world to help them engage their audiences and build brand awareness.
           </div>
           <div className="textStyle text-[#6A6A7B] w-2/4 text-justify ml-10">
             Our team can create amazing web experiences, beginning with deep
@@ -115,4 +96,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeComponent;
