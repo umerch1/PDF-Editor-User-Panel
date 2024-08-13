@@ -67,4 +67,4 @@ export const myApi = createApi({
 
     }),
 });
-export const { useGetUserQuery, useDeleteUserMutation, useLoginUserMutation,useLoginAdminMutation, useRegisterUserMutation, useResetPasswordMutation } = myApi;
+export const { useGetUserQuery, useDeleteUserMutation, useLoginUserMutation, useLoginAdminMutation, useRegisterUserMutation, useResetPasswordMutation } = myApi;

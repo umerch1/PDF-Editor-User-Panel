@@ -1,12 +1,9 @@
-import { useSelector } from "react-redux";
-import search from "../assets/icon_search.gif";
-import notification from "../assets/notification.gif";
-import AdminSidebar from "../components/AdminSidebar";
-import HistoryCard from "../components/HistoryCard";
-const Dashboard = () => {
-  const dataAccess = useSelector((state: any) => state.myReducer.userData);
-const userName=dataAccess[1].data.name.match(/\b\w/g).join('');
-  console.log("Data Access", dataAccess,userName);
+import search from "../../assets/icon_search.gif";
+import notification from "../../assets/notification.gif";
+import { AdminSidebar, HistoryCard } from "../../components";
+import { children } from "./DashboardTypes";
+const DashboardCustomers = ({ userName }: children) => {
+  console.log("userName", userName);
   return (
     <div className="w-full min-h-lvh flex flex-row">
       {/* SideBar */}
@@ -32,7 +29,9 @@ const userName=dataAccess[1].data.name.match(/\b\w/g).join('');
               alt="Notification"
             />
             <div className="w-10 h-10 bg-blueBg rounded-full flex justify-center items-center">
-              <span className="text-white text-md font-bold uppercase">{userName}</span>
+              <span className="text-white text-md font-bold uppercase">
+                {userName}
+              </span>
             </div>
           </div>
         </div>
@@ -49,4 +48,4 @@ const userName=dataAccess[1].data.name.match(/\b\w/g).join('');
   );
 };
 
-export default Dashboard;
+export default DashboardCustomers;
