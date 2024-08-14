@@ -1,11 +1,18 @@
-import { useRef, useState } from "react";
-import AdminSidebar from "../components/AdminSidebar";
 import { Document, Image, Page, pdf, StyleSheet } from "@react-pdf/renderer";
+import { useRef, useState } from "react";
+// @ts-ignore
 import { saveAs } from "file-saver";
 import axios from "axios";
-const ImageEditor = () => {
+import { ImageEitorTypes } from "./ImageEditorTypes";
+
+function ImageServiceEditor({ navigation, children }: ImageEitorTypes) {
   const [progress, setProgress] = useState(0);
-  const fileInputRef = useRef<any>(null);
+  // Image Background remove
+  const [image, setImage] = useState<any>(null);
+  const [processedImage, setProcessedImage] = useState<any>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const files = fileInputRef?.current?.files;
+  const images: (string | ArrayBuffer | null | undefined)[] = [];
   const styles = StyleSheet.create({
     image: {
       padding: 15,
@@ -13,9 +20,6 @@ const ImageEditor = () => {
     },
   });
   const convertToPDF = () => {
-    const files = fileInputRef.current.files;
-    const images: (string | ArrayBuffer | null | undefined)[] = [];
-
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const reader = new FileReader();
@@ -33,7 +37,6 @@ const ImageEditor = () => {
       reader.readAsDataURL(file);
     }
   };
-
   const pdfDownLoad = (images: any) => {
     let currentProgress = 0;
     const interval = setInterval(() => {
@@ -46,7 +49,6 @@ const ImageEditor = () => {
       }
     }, 300);
   };
-
   const genratePDF = async (images: any) => {
     try {
       const doc = (
@@ -67,11 +69,6 @@ const ImageEditor = () => {
       console.log("error", error);
     }
   };
-
-  // Image Background remove
-  const [image, setImage] = useState<any>(null);
-  const [processedImage, setProcessedImage] = useState<any>(null);
-
   const handleImageUpload = (event: any) => {
     setImage(event.target.files[0]);
   };
@@ -102,44 +99,15 @@ const ImageEditor = () => {
       console.error("Error removing background:", error);
     }
   };
-  return (
-    <div className="flex flex-row">
-      {/* SideBar */}
-      <AdminSidebar />
-      {/* Main */}
-      <main className="w-3/4 flex justify-around items-center">
-        <div className="editor-buttons ">
-          <input
-            type="file"
-            ref={fileInputRef}
-            className="w-full h-full"
-            id="upload-file"
-            placeholder="Upload a Picture"
-          />
-          <button
-            className="buttonStyle"
-            onClick={convertToPDF}
-            id="download-btn"
-          >
-            Convert to PDF
-          </button>
-          <br />
-        </div>
+  return children({
+    navigation,
+    fileInputRef,
+    convertToPDF,
+    processedImage,
+    handleImageUpload,
+    removeBackground,
+    progress,
+  });
+}
 
-        <div className="editor-buttons">
-          <input
-            type="file"
-            className="w-full h-full"
-            onChange={handleImageUpload}
-          />
-          <button onClick={removeBackground} className="buttonStyle">
-            Remove Background
-          </button>
-          {processedImage && <img src={processedImage} alt="Processed" />}
-        </div>
-      </main>
-    </div>
-  );
-};
-
-export default ImageEditor;
+export default ImageServiceEditor;
