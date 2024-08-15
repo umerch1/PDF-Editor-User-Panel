@@ -5,14 +5,12 @@ import { children } from "./SignInTypes";
 import { Auth } from "../../../components";
 
 const SignInComponent = ({
-  emailValue,
-  setEmailValue,
-  passwordValue,
-  setPasswordValue,
   isError,
   data,
   submitHandler,
   ToastContainer,
+  user,
+  setUser,
 }: children) => {
   return (
     <div>
@@ -20,13 +18,10 @@ const SignInComponent = ({
       <ToastContainer />
       <form onSubmit={submitHandler}>
         <Auth
-          setName={() => "e"}
           navigate={routs.DASHBOARD}
           titleName="Sign In"
-          emailValue={emailValue}
-          setEmailValue={setEmailValue}
-          passwordValue={passwordValue}
-          setPasswordValue={setPasswordValue}
+          user={user}
+          setUser={setUser}
           isError={isError}
         />
       </form>

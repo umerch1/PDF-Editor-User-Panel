@@ -9,7 +9,7 @@ const CustomersServiceComponent = ({
   const { data, isLoading, refetch, isFetching, isError } = useGetUserQuery({});
 
   console.log("data", isError);
-  const [progressBar, setProgressBar] = useState(null);
+  const [progressBar, setProgressBar] = useState<boolean>(false);
   const fetchData = async () => {
     await refetch();
   };

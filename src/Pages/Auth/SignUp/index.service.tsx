@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useRegisterUserMutation } from "../../../Redux/api";
 import { SignUpTypes } from "./SignUpTypes";
+import { Person } from "../../../types";
 
 const SignUpServiceComponent = ({ navigation, children }: SignUpTypes) => {
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const [user, setUser] = useState<Person>({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [name, setName] = useState("");
   const [registerUser, { isError, data, isLoading, isSuccess }] =
     useRegisterUserMutation();
@@ -19,11 +23,10 @@ const SignUpServiceComponent = ({ navigation, children }: SignUpTypes) => {
   console.log(isError);
   const submitHandler = async (e: any) => {
     e.preventDefault();
-    console.log(emailValue, passwordValue, name);
     const val = {
-      name: name,
-      email: emailValue,
-      password: passwordValue,
+      name: user?.name,
+      email: user?.email,
+      password: user?.password,
     };
 
     await registerUser(val);
@@ -31,10 +34,6 @@ const SignUpServiceComponent = ({ navigation, children }: SignUpTypes) => {
 
   return children({
     navigation,
-    emailValue,
-    setEmailValue,
-    passwordValue,
-    setPasswordValue,
     name,
     setName,
     isError,
@@ -42,6 +41,8 @@ const SignUpServiceComponent = ({ navigation, children }: SignUpTypes) => {
     isSuccess,
     isLoading,
     submitHandler,
+    user,
+    setUser,
   });
 };
 

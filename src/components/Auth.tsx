@@ -1,27 +1,21 @@
+import { Dispatch, SetStateAction } from "react";
 import routs from "../utilities/Routs";
 import { Link } from "react-router-dom";
+import { Person } from "../types";
 interface Authentication {
   titleName: string;
   signUp?: boolean;
   navigate: string;
-  emailValue: string;
-  setEmailValue: (e: string) => void;
-  setPasswordValue: (e: string) => void;
-  passwordValue: string;
   isError: boolean;
-  name?: string;
-  setName: (e: string) => void;
+  user: Person;
+  setUser: Dispatch<SetStateAction<Person>>;
 }
 const Auth = ({
   titleName,
   signUp,
-  emailValue,
-  setEmailValue,
-  passwordValue,
-  setPasswordValue,
   isError,
-  name,
-  setName,
+  user,
+  setUser,
 }: Authentication) => {
   return (
     <div className=" w-auto min-h-screen flex justify-center items-center ">
@@ -46,8 +40,12 @@ const Auth = ({
               type="text"
               name="name"
               id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={user.name}
+              onChange={(e) =>
+                setUser((prev) => {
+                  return { ...prev, name: e.target.value };
+                })
+              }
               className="bg-gray-50 border m-0  border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="Your Name"
               required
@@ -64,8 +62,12 @@ const Auth = ({
           <input
             type="email"
             name="email"
-            value={emailValue}
-            onChange={(e) => setEmailValue(e.target.value)}
+            value={user.email}
+            onChange={(e) =>
+              setUser((prev) => {
+                return { ...prev, email: e.target.value };
+              })
+            }
             id="email"
             className="bg-gray-50 border m-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             placeholder="name@company.com"
@@ -82,8 +84,12 @@ const Auth = ({
           <input
             type="password"
             name="password"
-            value={passwordValue}
-            onChange={(e) => setPasswordValue(e.target.value)}
+            value={user.password}
+            onChange={(e) =>
+              setUser((prev) => {
+                return { ...prev, password: e.target.value };
+              })
+            }
             id="password"
             placeholder="••••••••"
             className="bg-gray-50 border m-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
