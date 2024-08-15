@@ -25,16 +25,10 @@ type RelativeRoutingType = "route" | "path";
 export type children = {
     navigation: NavigateFunction,
     dispatch: AppDispatch,
-    emailValue: string;
-    setEmailValue: Dispatch<SetStateAction<string>>;
-    passwordValue: string;
-    setPasswordValue: Dispatch<SetStateAction<string>>;
     isError: boolean
     data?: []
     submitHandler: FormEventHandler<HTMLFormElement>;
     ToastContainer: any;
-    name: string;
-    setName: Dispatch<SetStateAction<string>>;
     isSuccess: boolean;
     isLoading: boolean;
     user: Person;
