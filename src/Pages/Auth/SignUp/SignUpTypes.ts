@@ -1,6 +1,7 @@
 import { To } from "react-router-dom";
 import { store } from "../../../Redux/store"
-import React, { FormEventHandler } from "react";
+import React, { Dispatch, FormEventHandler, SetStateAction } from "react";
+import { Person } from "../../../types";
 // Dispatch Type define
 export type AppDispatch = typeof store.dispatch;
 // navigation Type define
@@ -24,18 +25,14 @@ type RelativeRoutingType = "route" | "path";
 export type children = {
     navigation: NavigateFunction,
     dispatch: AppDispatch,
-    emailValue: string;
-    setEmailValue: (e: string) => void;
-    passwordValue: string;
-    setPasswordValue: (e: string) => void;
     isError: boolean
     data?: []
     submitHandler: FormEventHandler<HTMLFormElement>;
     ToastContainer: any;
-    name: string;
-    setName: (e: string) => void;
     isSuccess: boolean;
     isLoading: boolean;
+    user: Person;
+    setUser: Dispatch<SetStateAction<Person>>;
 
 }
 

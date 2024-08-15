@@ -4,19 +4,22 @@ import { userDataStore } from "../../../Redux/reducer";
 import { ToastContainer, toast } from "react-toastify";
 import { useLoginUserMutation } from "../../../Redux/api";
 import { SignInTypes } from "./SignInTypes";
+import { Person } from "../../../types";
 
 function SignInServiceComponent({ children, navigation }: SignInTypes) {
   const dispatch = useDispatch();
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const [user, setUser] = useState<Person>({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [loginUser, { isError, data }] = useLoginUserMutation();
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
-    console.log(emailValue, passwordValue);
     const val = {
-      email: emailValue,
-      password: passwordValue,
+      email: user?.email,
+      password: user?.password,
     };
     await loginUser(val);
     if (data) {
@@ -32,14 +35,12 @@ function SignInServiceComponent({ children, navigation }: SignInTypes) {
 
   return children({
     navigation,
-    emailValue,
-    setEmailValue,
-    passwordValue,
-    setPasswordValue,
     isError,
     data,
     submitHandler,
     ToastContainer,
+    user,
+    setUser,
   });
 }
 

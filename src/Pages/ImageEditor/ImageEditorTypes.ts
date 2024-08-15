@@ -1,7 +1,6 @@
 import { To } from "react-router-dom";
-import { store } from "../../../Redux/store"
-import React, { Dispatch, FormEventHandler, SetStateAction } from "react";
-import { Person } from "../../../types";
+import { store } from "../../Redux/store"
+import React, { LegacyRef } from "react";
 // Dispatch Type define
 export type AppDispatch = typeof store.dispatch;
 // navigation Type define
@@ -24,17 +23,15 @@ type RelativeRoutingType = "route" | "path";
 //   Page props pass types define
 export type children = {
     navigation: NavigateFunction,
-    dispatch: AppDispatch,
-    isError: boolean
-    data?: []
-    submitHandler: FormEventHandler<HTMLFormElement>;
-    ToastContainer: any;
-    user: Person;
-    setUser: Dispatch<SetStateAction<Person>>;
+    fileInputRef: LegacyRef<HTMLInputElement>,
+    convertToPDF: any,
+    processedImage: any,
+    handleImageUpload: () => void,
+    removeBackground: () => void,
 }
 
 // SignInTypes declare
-export interface SignInTypes {
+export interface ImageEitorTypes {
     navigation: NavigateFunction;
     children: any | children | React.ReactNode
 }

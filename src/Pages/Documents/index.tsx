@@ -1,6 +1,6 @@
-import AdminSidebar from "../components/AdminSidebar";
+import AdminSidebar from "../../components/AdminSidebar";
 import { EmbedPDF } from "@simplepdf/react-embed-pdf";
-const Documents = () => {
+const DocumentsComponent = () => {
   return (
     <div className="flex flex-row">
       {/* SideBar */}
@@ -17,4 +17,4 @@ const Documents = () => {
   );
 };
 
-export default Documents;
+export default DocumentsComponent;

@@ -5,16 +5,12 @@ import routs from "../../../utilities/Routs";
 import { children } from "./SignUpTypes";
 
 function SignUpComponent({
-  emailValue,
-  setEmailValue,
-  passwordValue,
-  setPasswordValue,
-  name,
-  setName,
   isError,
   isSuccess,
   isLoading,
   submitHandler,
+  user,
+  setUser,
 }: children) {
   return (
     <div>
@@ -26,17 +22,13 @@ function SignUpComponent({
             navigate={routs.DASHBOARD}
             titleName="Sign Up"
             signUp
-            name={name}
-            setName={setName}
-            emailValue={emailValue}
-            setEmailValue={setEmailValue}
-            passwordValue={passwordValue}
-            setPasswordValue={setPasswordValue}
+            user={user}
+            setUser={setUser}
             isError={isError}
           />
         </form>
       )}
-      {isSuccess && <Navigate replace to={"/admin/dashboard"} />}
+      {isSuccess && <Navigate replace to={routs.DASHBOARD} />}
     </div>
   );
 }

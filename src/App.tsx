@@ -5,8 +5,7 @@ import routs from "./utilities/Routs";
 
 const Dashboard = lazy(() => import("./Pages/Dashboard"));
 const Customers = lazy(() => import("./Pages/Customers/Customers"));
-const Document = lazy(() => import("./Pages/Documents"));
-const Transaction = lazy(() => import("./Pages/Transaction"));
+const Document = lazy(() => import("./Pages/Documents/Documents"));
 const SignIn = lazy(() => import("./Pages/Auth/SignIn/SignIn"));
 const EditUser = lazy(() => import("./Pages/Auth/EditUser"));
 const Home = lazy(() => import("./Pages/Home/Home"));
@@ -14,7 +13,7 @@ const SignUp = lazy(() => import("./Pages/Auth/SignUp/SignUp"));
 const Logout = lazy(() => import("./Pages/Auth/Logout"));
 const ForgetPassword = lazy(() => import("./Pages/Auth/ForgetPassword"));
 const AdminSignIn = lazy(() => import("./Pages/Auth/AdminSignIn"));
-const ImageEditor = lazy(() => import("./Pages/ImageEditor"));
+const ImageEditor = lazy(() => import("./Pages/ImageEditor/ImageEditor"));
 
 const App = () => {
   return (
@@ -33,7 +32,6 @@ const App = () => {
           <Route path={routs.DASHBOARD} element={<Dashboard />} />
           <Route path={routs.USER} element={<Customers />} />
           <Route path={routs.DOCUMENT} element={<Document />} />
-          <Route path={routs.TRANSACTION} element={<Transaction />} />
           <Route path={routs.IMAGE_EDITOR} element={<ImageEditor />} />
 
           {/* Charts */}

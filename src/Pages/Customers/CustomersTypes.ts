@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type children = {
 
     navigation: "POP" | "PUSH" | "REPLACE";
@@ -6,8 +8,8 @@ export type children = {
     refetch: any,
     isFetching: boolean,
     isError: boolean,
-    progressBar: any,
-    setProgressBar: Function;
+    progressBar: boolean,
+    setProgressBar: Dispatch<SetStateAction<boolean>>;
 
 }
 
