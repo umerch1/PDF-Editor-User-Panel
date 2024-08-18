@@ -1,0 +1,7 @@
+.card_style {
+    @apply flex w-full px-20 justify-center;
+}
+
+.flex_style {
+    @apply w-full flex flex-row
+}

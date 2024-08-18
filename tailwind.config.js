@@ -1,23 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,css}"],
   theme: {
     extend: {
       colors: {
-        'blueBg': '#13144D',
-        'main': '#41C93E',
-        'whiteText': '#fff',
+        blueBg: "#13144D",
+        main: "#41C93E",
+        whiteText: "#fff",
       },
-      fontFamily:{
+      fontFamily: {
         righteous: ["Righteous", "sans-serif"],
         Kanit: ["Kanit", "sans-serif"],
-
-      }
+      },
     },
   },
   plugins: [],
-}
-
+};

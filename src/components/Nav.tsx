@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 //@ts-ignore
 import pdf from "../assets/PDF_TECH.svg";
 import routs from "../utilities/Routs";
+import {} from "react-icons/fi";
 function Nav() {
   return (
     <div>
@@ -15,11 +16,8 @@ function Nav() {
             <img src={pdf} className="h-14 w-28" alt="Flowbite Logo" />
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <Link to={routs.SIGN_IN} className="buttonStyle">
+            <Link to={routs.SIGN_IN} className="buttonStyle hidden md:flex">
               Login
-            </Link>
-            <Link to={routs.SIGN_UP} className="buttonStyle mr-3">
-            Sign Up
             </Link>
             <button
               data-collapse-toggle="navbar-sticky"
@@ -50,28 +48,65 @@ function Nav() {
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-sticky"
           >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              <li>
-                <a href="#" className="navTitleStyle " aria-current="page">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="navTitleStyle">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="navTitleStyle">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="navTitleStyle">
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <div className="hidden  md:flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <a href="#" className="navTitleStyle " aria-current="page">
+                Home
+              </a>
+
+              <a href="#" className="navTitleStyle">
+                About
+              </a>
+
+              <a href="#" className="navTitleStyle">
+                Services
+              </a>
+
+              <a href="#" className="navTitleStyle">
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="nav-div" className="fixed inset-0 bg-white  hidden">
+          <div
+            id="nav-bar"
+            className="flex justify-between bg-blueBg px-20 py-5"
+          >
+            <a
+              href="https://flowbite.com/"
+              className="flex items-center space-x-3 rtl:space-x-reverse"
+            >
+              <img src={pdf} className="h-14 w-28" alt="Flowbite Logo" />
+            </a>
+            <button className="px-6 py-1 rounded-lg text-blueBg bg-white font-righteous">
+              X
+            </button>
+          </div>
+          <div
+            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+            id="navbar-sticky"
+          >
+            <div className="flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <a
+                href="#"
+                className="navTitleStyle text-blueBg "
+                aria-current="page"
+              >
+                Home
+              </a>
+
+              <a href="#" className="navTitleStyle text-blueBg">
+                About
+              </a>
+
+              <a href="#" className="navTitleStyle text-blueBg">
+                Services
+              </a>
+
+              <a href="#" className="navTitleStyle text-blueBg">
+                Contact
+              </a>
+            </div>
           </div>
         </div>
       </nav>

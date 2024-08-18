@@ -1,0 +1,27 @@
+.main-container {
+    @apply w-auto min-h-screen flex justify-center items-center;
+}
+
+.sub-container {
+    @apply bg-blueBg shadow-md border border-main rounded-lg h-5/6 max-w-sm p-4;
+}
+
+.flex-center {
+    @apply flex flex-row items-center justify-center;
+}
+
+.title-name {
+    @apply textStyle mb-3 text-2xl text-center;
+}
+
+.error-message {
+    @apply text-red-500 text-sm text-center;
+}
+
+.input-style {
+    @apply bg-gray-50 border m-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white;
+}
+
+.label-style {
+    @apply textStyle text-sm text-white m-0 inline;
+}

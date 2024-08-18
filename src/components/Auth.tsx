@@ -121,7 +121,7 @@ const Auth = ({
             </Link>
           )}
         </div>
-        <button className="buttonStyle text-xl font-bold w-full">
+        <button type="submit" className="buttonStyle text-xl font-bold w-full">
           {signUp ? "Create" : "Login"} to your account
         </button>
         <a className="textStyle text-center text-white mt-3 w-full justify-between">

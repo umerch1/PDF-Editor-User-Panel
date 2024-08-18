@@ -7,11 +7,13 @@ const Dashboard = lazy(() => import("./Pages/Dashboard"));
 const Customers = lazy(() => import("./Pages/Customers/Customers"));
 const Document = lazy(() => import("./Pages/Documents/Documents"));
 const SignIn = lazy(() => import("./Pages/Auth/SignIn/SignIn"));
-const EditUser = lazy(() => import("./Pages/Auth/EditUser"));
+const EditUser = lazy(() => import("./Pages/EditUser/EditUser"));
 const Home = lazy(() => import("./Pages/Home/Home"));
 const SignUp = lazy(() => import("./Pages/Auth/SignUp/SignUp"));
 const Logout = lazy(() => import("./Pages/Auth/Logout"));
-const ForgetPassword = lazy(() => import("./Pages/Auth/ForgetPassword"));
+const ForgetPassword = lazy(
+  () => import("./Pages/Auth/ForgetPassword/ForgetPassword")
+);
 const AdminSignIn = lazy(() => import("./Pages/Auth/AdminSignIn"));
 const ImageEditor = lazy(() => import("./Pages/ImageEditor/ImageEditor"));
 

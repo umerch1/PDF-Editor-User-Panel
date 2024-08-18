@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { userDataStore } from "../../../Redux/reducer";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,8 +15,8 @@ function SignInServiceComponent({ children, navigation }: SignInTypes) {
   });
   const [loginUser, { isError, data }] = useLoginUserMutation();
 
-  const submitHandler = async (e: any) => {
-    e.preventDefault();
+  const submitHandler = async (e: FormEvent<HTMLElement>) => {
+    e.preventDefault;
     const val = {
       email: user?.email,
       password: user?.password,

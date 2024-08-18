@@ -1,6 +1,6 @@
 import { To } from "react-router-dom";
 import { store } from "../../../Redux/store"
-import React, { Dispatch, FormEventHandler, SetStateAction } from "react";
+import { Dispatch, FormEventHandler, ReactNode, SetStateAction } from "react";
 import { Person } from "../../../types";
 // Dispatch Type define
 export type AppDispatch = typeof store.dispatch;
@@ -24,7 +24,7 @@ type RelativeRoutingType = "route" | "path";
 //   Page props pass types define
 export type children = {
     navigation: NavigateFunction,
-    dispatch: AppDispatch,
+    dispatch?: AppDispatch,
     isError: boolean
     data?: []
     submitHandler: FormEventHandler<HTMLFormElement>;
@@ -36,5 +36,5 @@ export type children = {
 // SignInTypes declare
 export interface SignInTypes {
     navigation: NavigateFunction;
-    children: any | children | React.ReactNode
-}
+    children: (props: children) => ReactNode;
+} 

@@ -1,4 +1,5 @@
 import "../../Styles/loginstyle.css";
+import "./style.css";
 import Nav from "../../components/Nav";
 import Banner from "../../components/Banner";
 import HeadingSection from "../../components/HeadingSection";
@@ -18,7 +19,7 @@ const HomeComponent = () => {
       {/* ------------------Heading----------------- */}
       <HeadingSection />
       {/* ------------------Cards-------------------- */}
-      <div className="flex w-full px-20 justify-center">
+      <div className="card_style">
         {CardsData.map((item) => {
           return (
             <Card
@@ -32,7 +33,7 @@ const HomeComponent = () => {
       </div>
       {/* ------------------Searvices---------------- */}
       <div className="bannerContainer py-20 flex-col">
-        <div className="w-full flex flex-row">
+        <div className="flex_style">
           <div className="w-2/4  ">
             <span className="textStyle capitalize mb-2">
               Creating Experiences Through.
@@ -42,26 +43,26 @@ const HomeComponent = () => {
               <br /> area in market.
             </p>
           </div>
-          <div className="w-2/4 flex flex-row justify-between">
+          <div className="flex_style justify-between">
             <ImageCard />
             <ImageCard />
           </div>
         </div>
         {/* 2nd card Image */}
-        <div className="w-full flex flex-row my-12">
+        <div className="flex_style my-12">
           <div className="w-1/4 flex  items-center">
             <img src={circle1} alt="" className="w-[68px] h-[68px] ml-6" />
           </div>
-          <div className="w-2/4 flex flex-row justify-between">
+          <div className="flex_style w-2/4  justify-between">
             <ImageCard />
             <ImageCard />
           </div>
           <div className="w-1/4"></div>
         </div>
         {/* 3rd card section */}
-        <div className="w-full flex flex-row">
+        <div className="flex_style">
           <div className="w-2/4"></div>
-          <div className="w-2/4 flex flex-row justify-between">
+          <div className="flex_style w-2/4 justify-between">
             <ImageCard />
             <ImageCard />
           </div>
@@ -73,7 +74,7 @@ const HomeComponent = () => {
         <p className="headingTextStyle text-blueBg text-[40px] mt-3 mb-5">
           Case Studies, a selection of successful projects.
         </p>
-        <div className="w-2/4 flex flex-row">
+        <div className="w-2/4 flex_style">
           <div className="textStyle text-[#6A6A7B] w-2/4 text-justify">
             pdfFiller is proud of its massive user base and is committed to
             delivering the greatest possible experience and value to each

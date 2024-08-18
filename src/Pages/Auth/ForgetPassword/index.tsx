@@ -1,48 +1,15 @@
-import { useResetPasswordMutation } from "../../Redux/api";
-import { useCallback, useState } from "react";
-import TextInput from "../../components/common/TextInput";
-import Modal from "../../components/common/Modal";
+import TextInput from "../../../components/common/TextInput";
+import Modal from "../../../components/common/Modal";
 import { Link } from "react-router-dom";
-import routs from "../../utilities/Routs";
-const ForgetPassword = () => {
-  const [emailValue, setEmailValue] = useState("");
-  const [newPassValue, setnewPassValue] = useState("");
-  const [confirmPassValue, setConfirmPassValue] = useState("");
-  const [errorState, setErrorState] = useState("");
-  const [open, setOpen] = useState(true);
-  const [resetPassword, { isError, data, error, isSuccess }] =
-    useResetPasswordMutation();
-  console.log("Response reset password", data, error);
-  console.log(isError);
-  const submitHandler = async (e: any) => {
-    e.preventDefault();
-    console.log(emailValue, newPassValue);
-    if (confirmPassValue == newPassValue) {
-      const val = {
-        email: emailValue,
-        password: newPassValue,
-      };
-      await resetPassword(val);
-      setEmailValue("");
-      setnewPassValue("");
-      setConfirmPassValue("");
-      setErrorState("");
-    } else {
-      setErrorState("Passwords do NOT match");
-    }
-  };
-  const handleEmailChange=useCallback((e:any)=>{
-    setEmailValue(e.target.value)
-  },[emailValue]);
-  
-  const handleNewPassword=useCallback((e:any)=>{
-    setnewPassValue(e.target.value)
-  },[newPassValue]);
+import routs from "../../../utilities/Routs";
+import { children } from "./ForgetPassTypes";
 
-  const handleConfirmPassword=useCallback((e:any)=>{
-    setConfirmPassValue(e.target.value)
-  },[confirmPassValue]);
-
+const ForgetPassComp = ({
+  user,
+  setUser,
+  isSuccess,
+  submitHandler,
+}: children) => {
   return (
     <main>
       <form onSubmit={submitHandler}>
@@ -59,8 +26,10 @@ const ForgetPassword = () => {
               labelName="Your Email"
               type="email"
               name="email"
-              value={emailValue}
-              onChange={handleEmailChange}
+              value={user.email}
+              onChange={(e) =>
+                setUser((prev) => ({ ...prev, email: e.target.value }))
+              }
               placeholder="name@company.com"
             />
             {/* _____________New password input____________ */}
@@ -70,8 +39,10 @@ const ForgetPassword = () => {
               labelName="New password"
               type="password"
               name="password"
-              value={newPassValue}
-              onChange={handleNewPassword}
+              value={user.newPass}
+              onChange={(e) =>
+                setUser((prev) => ({ ...prev, newPass: e.target.value }))
+              }
               placeholder="••••••••"
               eye
             />
@@ -82,12 +53,16 @@ const ForgetPassword = () => {
               labelName="Confirm password"
               type="password"
               name="password"
-              value={confirmPassValue}
-              onChange={handleConfirmPassword}
+              value={user.confirmPass}
+              onChange={(e) =>
+                setUser((prev) => ({ ...prev, confirmPass: e.target.value }))
+              }
               placeholder="••••••••"
               eye
             />
-            <span className="textStyle text-sm text-red-500">{errorState}</span>
+            <span className="textStyle text-sm text-red-500">
+              {user.errorMess}
+            </span>
             <button className="buttonStyle text-xl font-bold w-full my-5">
               Reset Your password
             </button>
@@ -95,7 +70,10 @@ const ForgetPassword = () => {
         </div>
       </form>
       {isSuccess && (
-        <Modal open={open} onClose={() => setOpen(false)}>
+        <Modal
+          open={user.open}
+          onClose={() => setUser((prev) => ({ ...prev, open: false }))}
+        >
           <div className="text-center w-56">
             {/* <FontAwesomeIcon icon="fa-solid fa-circle-check" /> */}
             <div className="mx-auto my-4 w-48">
@@ -107,10 +85,7 @@ const ForgetPassword = () => {
               </p>
             </div>
             <div className="flex gap-4">
-              <Link
-                to={routs.SIGN_IN}
-                className="btn buttonStyle w-full"
-              >
+              <Link to={routs.SIGN_IN} className="btn buttonStyle w-full">
                 Login
               </Link>
             </div>
@@ -121,4 +96,4 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+export default ForgetPassComp;

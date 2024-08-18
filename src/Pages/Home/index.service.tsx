@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { userData } from "../../Redux/reducer";
 import routs from "../../utilities/Routs";
+import { useNavigate } from "react-router-dom";
 
-function HomeServiceComponent({ navigation, children }: any) {
+function HomeServiceComponent({ children }: any) {
+  const navigation = useNavigate();
   const dataAccess = useSelector((state: any) => state.myReducer.userData);
   console.log("dataAccess", dataAccess);
   useEffect(() => {
